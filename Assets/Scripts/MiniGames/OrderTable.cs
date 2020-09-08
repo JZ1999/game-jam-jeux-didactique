@@ -6,9 +6,9 @@ public class OrderTable : Minigames
 {
     [Header("Custom Variables")]
     [SerializeField]
-    private List<GameObject> objectsToRespawn = new List<GameObject>();
+    public List<GameObject> objectsToRespawn = new List<GameObject>();
 
-    
+    private GameObject receivedObject;
 
     override public void Play() {
 
@@ -24,5 +24,9 @@ public class OrderTable : Minigames
 
 
         return newPosition;
+    }
+
+    public void SetObject(GameObject newObject) {
+        receivedObject = newObject;
     }
 }
