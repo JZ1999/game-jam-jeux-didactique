@@ -6,9 +6,10 @@ public class OrderTable : Minigames
 {
     [Header("Custom Variables")]
     [SerializeField]
-    public List<GameObject> objectsToRespawn = new List<GameObject>();
+    private List<GameObject> objectsToSpawn = new List<GameObject>();
+	private List<Word> neededListOfObjects = new List<Word>();
 
-    private GameObject receivedObject;
+	private GameObject receivedObject;
 
     override public void Play() {
 

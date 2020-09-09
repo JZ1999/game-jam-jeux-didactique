@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    public GameObject player;
+	private int index;
     void Start()
     {
-        
-    }  
+		index = ManagementMiniGames.player.GetComponent<ManagementMiniGames>().indiceGame;
+	}  
 
 	private void OnMouseDown(){
-	 	
+		SendToOrderedTable();
 	}
 
-    private void SendToPlayer() {
-        //player.TakeObject(gameObject);
+    private void SendToOrderedTable() {
+		//ManagementMiniGames.player.GetComponent<ManagementMiniGames>().miniGames[index];
+		gameObject.SetActive(false);
     }
 
 }
