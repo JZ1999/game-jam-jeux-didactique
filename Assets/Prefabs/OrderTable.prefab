@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7855914299727151387}
   - component: {fileID: -8782168714110812790}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: OrderTable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,4 +125,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 356c498679c3b7645b96c8aa687a198c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectsToRespawn: []
+  objectsToSpawn:
+  - {fileID: 6700375376554083357, guid: 1c364a8438131704c814e205fd9c88da, type: 3}
+  - {fileID: 6700375376554083357, guid: 1c364a8438131704c814e205fd9c88da, type: 3}
+  - {fileID: 6700375376554083357, guid: 1c364a8438131704c814e205fd9c88da, type: 3}
+  neededListOfObjects: []
+  objToInteract1: {fileID: 0}
+  objToInteract2: {fileID: 0}

@@ -13,27 +13,24 @@ public class ManagementMiniGames : MonoBehaviour
     no se seteará en el jugador sino cada personaje tendrá un hijo diferente
          */
 	public static GameObject player;
-    public List<Minigames> miniGames = new List<Minigames>(); 
-    public int indiceGame;
+    public OrderTable miniGame;    
+    
     [SerializeField]
     private readonly int State;
 
+    private void Awake()
+    {
+        ManagementMiniGames.player = gameObject;
+    }
+
     virtual protected void Start()
     {
-		ManagementMiniGames.player = gameObject;
-        indiceGame = 0;
+        
 		NextGame();
     }
-
-    // Update is called once per frame
-    virtual protected void Update()
+    
+    virtual public void NextGame()
     {
-         
-    }
-
-
-    virtual protected void NextGame()
-    {
-        miniGames[indiceGame++].Play();
+        miniGame.Play();
     }
 }

@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PickUp : MonoBehaviour
-{
-	private int index;
+{	
+    public GameObject miniGame;
     void Start()
-    {
-		index = ManagementMiniGames.player.GetComponent<ManagementMiniGames>().indiceGame;
+    {		
 	}  
 
 	private void OnMouseDown(){
@@ -15,8 +14,10 @@ public class PickUp : MonoBehaviour
 	}
 
     private void SendToOrderedTable() {
-		//ManagementMiniGames.player.GetComponent<ManagementMiniGames>().miniGames[index];
-		gameObject.SetActive(false);
+        miniGame.GetComponent<OrderTable>().SetObjectTable(gameObject);
     }
 
+    public void ClickOnLabel(GameObject obj){
+        miniGame.GetComponent<OrderTable>().SetObjectInterface(obj);
+    }
 }
