@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WordSelect : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class WordSelect : MonoBehaviour
 	private Sentence currentSentence;
 	[SerializeField]
 	private GameObject buttonPrefab;
+	[SerializeField]
+	private WordBuilder wordBuilder;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +42,7 @@ public class WordSelect : MonoBehaviour
 			GameObject prefab = Instantiate(buttonPrefab, transform);
 
 			prefab.GetComponentInChildren<TextMeshProUGUI>().SetText(word);
+			prefab.GetComponent<Button>().onClick.AddListener(() => wordBuilder.ActivateWord(word));
 		}
 		
 	}

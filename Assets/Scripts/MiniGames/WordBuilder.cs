@@ -35,13 +35,26 @@ public class WordBuilder : MonoBehaviour
 			GameObject prefabWord = Instantiate(buttonPrefabWord, transform.parent);
 			prefabWord.GetComponent<RectTransform>().position = placeholder.GetComponent<RectTransform>().position;
 			prefabWord.transform.position = new Vector3(prefabWord.transform.position.x, prefabWord.transform.position.y + offsetY, 0);
-			//prefabWord.SetActive(false);
+			prefabWord.SetActive(false);
 			buttonWords.Add(prefabWord);
 
 			prefabWord.GetComponentInChildren<TextMeshProUGUI>().SetText(currentSentence.words[i]);
 		}
 		
 
+	}
+
+	public void ActivateWord(string word)
+	{
+		foreach(GameObject correctWordObject in buttonWords)
+		{
+			string correctWord = correctWordObject.GetComponent<TextMeshProUGUI>().text;
+
+			if (correctWord == word)
+			{
+				correctWordObject.SetActive(true);
+			}
+		}
 	}
 
 
