@@ -13,11 +13,15 @@ public class WordSelect : MonoBehaviour
 	[SerializeField]
 	private WordBuilder wordBuilder;
 
+	private List<GameObject> currentWordButtons = new List<GameObject>();
+
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
+		GameObject prefab = Instantiate(buttonPrefab, transform);
+
+		prefab.GetComponentInChildren<TextMeshProUGUI>().SetText("asdasdas");
+	}
 
     // Update is called once per frame
     void Update()
@@ -25,8 +29,21 @@ public class WordSelect : MonoBehaviour
         
     }
 
+	void clearGUIItems()
+	{
+		int count = currentWordButtons.Count;
+		for (int i = 0; i < count; i++)
+		{
+			GameObject wordButton = currentWordButtons[0];
+			wordButton.SetActive(false);
+			currentWordButtons.Remove(wordButton);
+			Destroy(wordButton);
+		}
+	}
+
 	public void setSentence(Sentence sentence)
 	{
+		clearGUIItems();
 		List<string> tempSentences = new List<string>();
 		currentSentence = sentence;
 
@@ -43,6 +60,7 @@ public class WordSelect : MonoBehaviour
 
 			prefab.GetComponentInChildren<TextMeshProUGUI>().SetText(word);
 			prefab.GetComponent<Button>().onClick.AddListener(() => wordBuilder.ActivateWord(word));
+			currentWordButtons.Add(prefab);
 		}
 		
 	}
