@@ -5,6 +5,9 @@ using UnityEngine;
 public class PickUp : MonoBehaviour
 {	
     public GameObject miniGame;
+
+    
+
     void Start()
     {		
 	}  
@@ -14,10 +17,12 @@ public class PickUp : MonoBehaviour
 	}
 
     private void SendToOrderedTable() {
+        Debug.Log(1.1);
         miniGame.GetComponent<OrderTable>().SetObjectTable(gameObject);
     }
 
-    public void ClickOnLabel(GameObject obj){
-        miniGame.GetComponent<OrderTable>().SetObjectInterface(obj);
+    public void ClickOnLabel(Word word){
+        Debug.Log(1.2);
+        miniGame.GetComponent<OrderTable>().SetObjectInterface(word);
     }
 }

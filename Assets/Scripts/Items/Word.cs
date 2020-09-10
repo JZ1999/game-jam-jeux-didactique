@@ -9,4 +9,5 @@ public class Word : ScriptableObject
 	public AudioSource audio;
 	public Sprite img;
 	public GameObject obj;
+    public GameObject button;
 }
