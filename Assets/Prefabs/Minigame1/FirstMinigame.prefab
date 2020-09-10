@@ -49,5 +49,9 @@ MonoBehaviour:
   neededListOfObjects:
   - {fileID: 0}
   - {fileID: 0}
+  words: []
+  stand: {fileID: 0}
+  templateButton: {fileID: 0}
+  panel: {fileID: 0}
   objToInteract1: {fileID: 0}
-  objToInteract2: {fileID: 0}
+  objToInteract2: {fileID: 11400000, guid: 8682c82f2bda24c4690b88c54d1db30d, type: 2}

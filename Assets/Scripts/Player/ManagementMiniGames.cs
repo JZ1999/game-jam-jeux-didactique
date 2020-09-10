@@ -6,7 +6,7 @@ public class ManagementMiniGames : MonoBehaviour
 {
     
 	public static GameObject player;
-    public OrderTable miniGame;    
+    //public OrderObjecsTable miniGame;    
     
     [SerializeField]
     private readonly int State;
@@ -24,6 +24,6 @@ public class ManagementMiniGames : MonoBehaviour
     
     virtual public void NextGame()
     {
-        miniGame.Play();
+        //miniGame.Play();
     }
 }

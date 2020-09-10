@@ -5,9 +5,7 @@ using UnityEngine;
 public class PickUp : MonoBehaviour
 {	
     public GameObject miniGame;
-
     
-
     void Start()
     {		
 	}  
