@@ -19,26 +19,39 @@ public class Client : MonoBehaviour
 	void Start()
     {
 		//TODO make random
-		currentPhrases = availableSentences;
+		Utils.Shuffle(availableSentences);
+		currentPhrases = availableSentences.GetRange(0, 2);
 		NextPhrase();
     }
 
 	void NextPhrase()
 	{
+		if (currentPhraseId >= currentPhrases.Count)
+		{
+			Debug.Log("You win!");
+			wordBuilder.gotWordCorrect = false;
+			return;
+		}
+
+		wordBuilder.gotWordCorrect = false;
 		wordSelection.setSentence(currentPhrases[currentPhraseId]);
 		StartCoroutine(wordBuilder.setSentence(currentPhrases[currentPhraseId]));
 		soundManager.clip = currentPhrases[currentPhraseId].audio;
 		soundManager.Play();
 		currentPhraseId++;
-		if (currentPhraseId >= currentPhrases.Count)
-		{
-			//Next minigame
-		}
+	}
+
+	public void PlayPhraseSound()
+	{
+		soundManager.Play();
 	}
 
     // Update is called once per frame
     void Update()
     {
-        
+		if (wordBuilder.gotWordCorrect)
+		{
+			NextPhrase();
+		}
     }
 }

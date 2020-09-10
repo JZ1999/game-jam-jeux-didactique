@@ -1,0 +1,1 @@
+You'll need to import standard Unity 3D "Characters" asset to walk through the demo scene.
