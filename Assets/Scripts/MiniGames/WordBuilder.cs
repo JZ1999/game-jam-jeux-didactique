@@ -14,7 +14,10 @@ public class WordBuilder : MonoBehaviour
 	[SerializeField]
 	[Range(0,100)]
 	private float offsetY;
+	[SerializeField]
+	private Timer timer;
 	
+	[HideInInspector]
 	public bool gotWordCorrect = false;
 
 	private List<GameObject> buttonPlaceholders = new List<GameObject>();
@@ -70,15 +73,22 @@ public class WordBuilder : MonoBehaviour
 
 	public void ActivateWord(string word)
 	{
+		bool gotAWordRight = false;
 		foreach(GameObject correctWordObject in buttonWords)
 		{
 			string correctWord = correctWordObject.GetComponent<TextMeshProUGUI>().text;
 
 			if (correctWord == word)
 			{
+				gotAWordRight = true;
 				correctWordObject.SetActive(true);
 				gotWordCorrect = DidGetWordCorrect();
 			}
+		}
+
+		if (!gotAWordRight)
+		{
+			timer.ReduceTime(timer._gameTime / 10);
 		}
 	}
 

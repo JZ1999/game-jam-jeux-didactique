@@ -18,9 +18,6 @@ public class WordSelect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		GameObject prefab = Instantiate(buttonPrefab, transform);
-
-		prefab.GetComponentInChildren<TextMeshProUGUI>().SetText("asdasdas");
 	}
 
     // Update is called once per frame
@@ -58,7 +55,7 @@ public class WordSelect : MonoBehaviour
 		{
 			GameObject prefab = Instantiate(buttonPrefab, transform);
 
-			prefab.GetComponentInChildren<TextMeshProUGUI>().SetText(word);
+			prefab.GetComponentInChildren<Text>().text = word;
 			prefab.GetComponent<Button>().onClick.AddListener(() => wordBuilder.ActivateWord(word));
 			currentWordButtons.Add(prefab);
 		}

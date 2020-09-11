@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Client : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class Client : MonoBehaviour
 	private WordBuilder wordBuilder;
 	[SerializeField]
 	private AudioSource soundManager;
+	[SerializeField]
+	private int amountOfProblems = 2;
 
 	private int currentPhraseId = 0;
 
@@ -20,7 +23,7 @@ public class Client : MonoBehaviour
     {
 		//TODO make random
 		Utils.Shuffle(availableSentences);
-		currentPhrases = availableSentences.GetRange(0, 2);
+		currentPhrases = availableSentences.GetRange(0, amountOfProblems);
 		NextPhrase();
     }
 
