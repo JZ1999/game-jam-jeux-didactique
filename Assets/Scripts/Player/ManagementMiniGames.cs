@@ -6,7 +6,7 @@ public class ManagementMiniGames : MonoBehaviour
 {
     
 	public static GameObject player;
-    //public OrderObjecsTable miniGame;    
+    public OrderObjecsTable miniGame;    
     
     [SerializeField]
     private readonly int State;
