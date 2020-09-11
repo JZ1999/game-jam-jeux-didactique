@@ -8,12 +8,12 @@ public class OrderObjecsTable : MonoBehaviour
 {
 
     [SerializeField]
-    [Tooltip("Objetos para la mesa (erroneos + correctos)")]
+    [Tooltip("Objetos para la mesa (erroneos + correctos) (seran visibles para el usaurio, en la mesa )")]
     private List<GameObject> objectsToSpawn = new List<GameObject>(); //objectos en la mesa (errroneos + correctos)
 
 
     [SerializeField]
-    [Tooltip("Objetos para comparacion (correctos + nulls)")]
+    [Tooltip("Objetos para comparacion (correctos + nulls) (no serán visibles para el usuario")]
     private List<GameObject> neededListOfObjects = new List<GameObject>();
 
     private List<GameObject> objDisabled = new List<GameObject>();
@@ -21,7 +21,7 @@ public class OrderObjecsTable : MonoBehaviour
     private Dictionary<GameObject, GameObject> correlation = new Dictionary<GameObject, GameObject>(); // <objectospawn, nnedenlistobjects>
 
     [SerializeField]
-    [Tooltip("Wordobjects para la ubicacion de los botones (correctos)")]
+    [Tooltip("Wordobjects para la ubicacion de los botones (correctos) (seran visibles para el usaurio, en la interfaz)")]
     public List<Word> words = new List<Word>();
 
     public GameObject stand;
@@ -35,13 +35,6 @@ public class OrderObjecsTable : MonoBehaviour
     [SerializeField]
     private Word objToInteract2; //objects in interface 
 
-    public void Start()
-    {
-        BuildDictionary();
-        CreateButtoms();
-        PositionObjects();
-    }
-
     public void CreateButtoms()
     {
 
@@ -52,10 +45,6 @@ public class OrderObjecsTable : MonoBehaviour
             gameObjectWord.GetComponent<Button>().onClick.AddListener(() => word.obj.GetComponent<PickUp>().ClickOnLabel(word));
             word.button = gameObjectWord;
         }
-    }
-
-    public void Update()
-    {
     }
 
     private void BuildDictionary()
@@ -75,7 +64,9 @@ public class OrderObjecsTable : MonoBehaviour
 
     public void Play()
     {
-
+        BuildDictionary();
+        CreateButtoms();
+        PositionObjects();
     }
 
     private void PositionObjects()
@@ -97,15 +88,18 @@ public class OrderObjecsTable : MonoBehaviour
 
     private void Validate()
     {
-        int balance = correlation[objToInteract2.obj].GetComponent<ID>().id - correlation[objToInteract1].GetComponent<ID>().id;
-        if (balance == 0)
-        {
-            HideObj();
-        }
-        else
+
+        if (correlation[objToInteract2.obj] == null)
         {
             LoseState();
+            UnSet();
+            return;
         }
+        int balance = correlation[objToInteract2.obj].GetComponent<ID>().id - correlation[objToInteract1].GetComponent<ID>().id;
+        if (balance == 0)
+            HideObj();
+        else
+            LoseState();
         UnSet();
     }
 
