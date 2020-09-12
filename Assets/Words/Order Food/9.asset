@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goodImage: {fileID: 21300000, guid: d411838f822e7894cbe2737a341cfbe6, type: 3}
   badImage: {fileID: 21300000, guid: b4087e861c8af5f448c1bad7b6a5d95f, type: 3}
-  audio: {fileID: 8300000, guid: 7f9d3c295386c2c468091689171a5fcb, type: 3}
+  audio: {fileID: 8300000, guid: e6e223063e0af2746a1c997b281a7bf3, type: 3}

@@ -32,6 +32,7 @@ public class Client : MonoBehaviour
 		if (currentPhraseId >= currentPhrases.Count)
 		{
 			wordBuilder.gotWordCorrect = false;
+			SceneManager.LoadScene("win");
 			return;
 		}
 
