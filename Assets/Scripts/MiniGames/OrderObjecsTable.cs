@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class OrderObjecsTable : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class OrderObjecsTable : MonoBehaviour
     private List<Word> objDisabled = new List<Word>();
 
     private List<GameObject> setObjectsToWords = new List<GameObject>();
+
+    public SceneAdministrator nextScene;
 
     [SerializeField]
     [Tooltip("Wordobjects para la ubicacion de los botones (correctos) (seran visibles para el usaurio, en la interfaz)")]
@@ -99,9 +102,7 @@ public class OrderObjecsTable : MonoBehaviour
     {
       
         foreach(Word word in objDisabled)
-        {
-            Debug.Log(word.obj.GetComponent<ID>().id + "  " + word.obj + "  f"  + word.button);
-            
+        {   
             word.obj.SetActive(true);            
             word.button.SetActive(true);
         }
@@ -111,22 +112,54 @@ public class OrderObjecsTable : MonoBehaviour
     private void HideObj()
     {
         objDisabled.Add(objToInteract2);
+        invertirOutline(objToInteract1, false);
         objToInteract1.SetActive(false);
         objToInteract2.button.SetActive(false);
+        if (objDisabled.Count == objectsToSpawn.Count) 
+            WinState();
     }
 
     private void UnSet()
     {
+        UnityEngine.Color white = Color.white;
+        invertirOutline(objToInteract1, false);
         objToInteract1 = null;
+        objToInteract2.button.GetComponent<Image>().color = white;
         objToInteract2 = null;
+        
+    }
+
+
+
+    public void invertirOutline(GameObject obj , bool bol) {
+        
+        cakeslice.Outline f = obj.GetComponent<cakeslice.Outline>();
+        if (f == null)
+        {
+            foreach (Transform trna in obj.transform)
+            {
+                f = trna.gameObject.GetComponent<cakeslice.Outline>();
+                if (f != null)
+                {
+                    f.enabled = bol;
+                }
+            }
+        }
+        else
+        {
+            f.enabled = bol;
+        }
     }
 
     public void SetObjectInterface(Word word)
     {
         if (objToInteract2 == null)
-        {            
+        {
             /*agregar efectos de luz*/
+            
+
             objToInteract2 = word;
+            objToInteract2.button.GetComponent<Image>().color = Color.red;
             if (objToInteract1 != null)
             {
                 Validate();
@@ -136,6 +169,7 @@ public class OrderObjecsTable : MonoBehaviour
         if (word.obj.GetComponent<ID>().id == objToInteract2.obj.GetComponent<ID>().id)
         {
             /* quitar efectos de luz*/
+            objToInteract2.button.GetComponent<Image>().color = Color.white;
             objToInteract2 = null;
             return;
         }
@@ -146,7 +180,9 @@ public class OrderObjecsTable : MonoBehaviour
         if (objToInteract1 == null)
         {
             /*agregar efectos de luz*/
+
             objToInteract1 = obj;
+            invertirOutline(objToInteract1, true);
             if (objToInteract2 != null)
             {
                 Validate();
@@ -156,9 +192,14 @@ public class OrderObjecsTable : MonoBehaviour
         if (obj.GetComponent<ID>().id == objToInteract1.GetComponent<ID>().id)
         {
             /* quitar efectos de luz*/
+            invertirOutline(objToInteract1, false);
             objToInteract1 = null;
             return;
         }
+    }
+
+    private void WinState() {
+        SceneManager.LoadScene("Third Minigame");
     }
 
     private void LoseState()

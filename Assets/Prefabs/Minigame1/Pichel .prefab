@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 5208842991354753693}
   - component: {fileID: 9216155457120681272}
   - component: {fileID: 6341820096249612786}
-  - component: {fileID: 7280690057368390531}
-  - component: {fileID: 1834607351895737023}
-  - component: {fileID: -3339014755400593794}
+  - component: {fileID: -2626389763211951229}
+  - component: {fileID: -1714825682851927556}
+  - component: {fileID: 5226457099967647319}
+  - component: {fileID: -8558883356468200249}
   m_Layer: 0
   m_Name: 'Pichel '
   m_TagString: Untagged
@@ -84,7 +85,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7280690057368390531
+--- !u!64 &-2626389763211951229
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,7 +99,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -234212019105020435, guid: 9813a74bfd9a9274da71d400a6e1c1bc, type: 3}
---- !u!114 &1834607351895737023
+--- !u!114 &-1714825682851927556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4828518192991954983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6dbfa26a5defb479347fc0f81e11de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 4
+--- !u!114 &5226457099967647319
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,16 +125,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   miniGame: {fileID: 0}
---- !u!114 &-3339014755400593794
+--- !u!114 &-8558883356468200249
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4828518192991954983}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd6dbfa26a5defb479347fc0f81e11de, type: 3}
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  color: 0
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []

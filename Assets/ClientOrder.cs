@@ -32,7 +32,6 @@ public class ClientOrder : MonoBehaviour
 	{
 		if (currentFoodPair >= foodPairs.Count)
 		{
-			Debug.Log("You win");
 			SceneManager.LoadScene("Fourth Minigame");
 			return;
 		}
@@ -54,13 +53,11 @@ public class ClientOrder : MonoBehaviour
 	{
 		if (goodImage)
 		{
-			Debug.Log("Good Image");
 			currentFoodPair++;
 			NextPair();
 		}
 		else
 		{
-			Debug.Log("Bad Image");
 			GetComponent<Timer>().ReduceTime(GetComponent<Timer>()._gameTime/10);
 		}
 	}

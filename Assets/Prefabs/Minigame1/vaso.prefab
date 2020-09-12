@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 5800986692353971294}
   - component: {fileID: 7435132081476852731}
   - component: {fileID: 4668564260741787441}
-  - component: {fileID: -4674250917090353379}
-  - component: {fileID: -1198614511365920014}
-  - component: {fileID: -7129408514166837538}
+  - component: {fileID: -8991662683355869361}
+  - component: {fileID: 2952946274019698992}
+  - component: {fileID: -2745699620997021845}
+  - component: {fileID: 3112967758639618822}
   m_Layer: 0
   m_Name: vaso
   m_TagString: Untagged
@@ -84,7 +85,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &-4674250917090353379
+--- !u!64 &-8991662683355869361
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,7 +99,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2453807835456906848, guid: ad2871097833bb147a4f6aafd067c1da, type: 3}
---- !u!114 &-1198614511365920014
+--- !u!114 &2952946274019698992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6614360712052903652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6dbfa26a5defb479347fc0f81e11de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 9
+--- !u!114 &-2745699620997021845
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,16 +125,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   miniGame: {fileID: 0}
---- !u!114 &-7129408514166837538
+--- !u!114 &3112967758639618822
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6614360712052903652}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd6dbfa26a5defb479347fc0f81e11de, type: 3}
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  color: 0
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []

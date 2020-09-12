@@ -31,7 +31,6 @@ public class Client : MonoBehaviour
 	{
 		if (currentPhraseId >= currentPhrases.Count)
 		{
-			Debug.Log("You win!");
 			wordBuilder.gotWordCorrect = false;
 			return;
 		}
