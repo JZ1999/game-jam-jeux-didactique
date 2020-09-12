@@ -37,6 +37,11 @@ public class OrderObjecsTable : MonoBehaviour
     [SerializeField]
     private Word objToInteract2; //objects in interface 
 
+    private void Start()
+    {
+        Play();
+    }
+
     public void CreateButtoms()
     {
         int max = words.Count;
@@ -73,7 +78,7 @@ public class OrderObjecsTable : MonoBehaviour
             obj.GetComponent<PickUp>().setMinigame(gameObject);
             children = stand.transform.GetChild(order[index]);            
             newPosition = children.transform.position;
-            setObjectsToWords.Add(Instantiate(obj, newPosition, new Quaternion(), stand.transform));
+            setObjectsToWords.Add(Instantiate(obj, newPosition, obj.transform.rotation, stand.transform));
             index++;
         }
 
