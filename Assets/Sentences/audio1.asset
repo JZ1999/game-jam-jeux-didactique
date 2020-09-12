@@ -13,18 +13,18 @@ MonoBehaviour:
   m_Name: audio1
   m_EditorClassIdentifier: 
   words:
-  - on
-  - mange
+  - je
+  - "pr\xE9f\xE8re"
+  - le
+  - poisson
+  - aux
+  - fruits
   - de
-  - la
-  - viande
-  - on
-  - n'est
-  - pas
-  - "v\xE9g\xE9tariens"
+  - mer
   badWords:
-  - a
-  - "mang\xE9"
-  - "n\xE9"
-  - "v\xE9g\xE9tarienne"
+  - "J\u2019"
+  - ai
+  - "pr\xE9f\xE9r\xE9"
+  - poisons
+  - fruts
   audio: {fileID: 8300000, guid: 665fb6c829701e042a21aff503cc6fd7, type: 3}

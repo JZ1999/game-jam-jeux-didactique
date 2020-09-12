@@ -13,18 +13,15 @@ MonoBehaviour:
   m_Name: audio3
   m_EditorClassIdentifier: 
   words:
-  - si
-  - ces
-  - cerises
-  - sont
-  - vertes
-  - je
-  - les
-  - veux
-  badWords:
-  - six
-  - sept
-  - vert
+  - "J\u2019"
+  - ai
+  - "trouv\xE9"
   - le
-  - vaux
+  - repas
+  - excellent
+  badWords:
+  - Je
+  - trouve
+  - les
+  - excellente
   audio: {fileID: 8300000, guid: 6b3c684977dcec844b36794c99fdc0d1, type: 3}

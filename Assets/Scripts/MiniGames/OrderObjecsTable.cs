@@ -52,7 +52,7 @@ public class OrderObjecsTable : MonoBehaviour
         foreach(Word word in words)
         {
             GameObject gameObjectWord = Instantiate(templateButton, panel);
-            gameObjectWord.GetComponentInChildren<Text>().text = word.word;
+            gameObjectWord.GetComponentInChildren<TextMeshProUGUI>().text = word.word;
             gameObjectWord.GetComponent<PickUp>().setMinigame(gameObject);
             gameObjectWord.GetComponent<Button>().onClick.AddListener(() => word.obj.GetComponent<PickUp>().ClickOnLabel(word));
             word.button = gameObjectWord;
