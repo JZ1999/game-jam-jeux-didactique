@@ -15,4 +15,5 @@ MonoBehaviour:
   word: "Une cuill\xE8re"
   audio: {fileID: 0}
   img: {fileID: 0}
-  obj: {fileID: 7978037334184048775, guid: 2e0c304df475a754e9fb719050965d89, type: 3}
+  obj: {fileID: 0}
+  button: {fileID: 0}

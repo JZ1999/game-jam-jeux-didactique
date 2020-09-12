@@ -14,13 +14,16 @@ public class PickUp : MonoBehaviour
 		SendToOrderedTable();
 	}
 
+    public void setMinigame(GameObject newMinigame) {
+        miniGame = newMinigame;
+    }
+
     private void SendToOrderedTable() {
-        Debug.Log(1.1);
-        miniGame.GetComponent<OrderTable>().SetObjectTable(gameObject);
+        miniGame.GetComponent<OrderObjecsTable>().SetObjectTable(gameObject);
     }
 
     public void ClickOnLabel(Word word){
-        Debug.Log(1.2);
-        miniGame.GetComponent<OrderTable>().SetObjectInterface(word);
+        miniGame.GetComponent<OrderObjecsTable>().SetObjectInterface(word);
     }
 }
+ 

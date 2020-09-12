@@ -3,7 +3,8 @@ guid: ff1205b95d1672945bbbd4523bbce71d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - miniGame1: {fileID: -5215548664281099269, guid: 819624098af00e5498ae139e1c0c0408, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

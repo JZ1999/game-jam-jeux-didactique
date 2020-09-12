@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd6dbfa26a5defb479347fc0f81e11de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  id: 1
 --- !u!114 &8192513592863509938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a763c2080b5d6042af23058d008b3ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  miniGame: {fileID: 1082605781320090400, guid: 3101e3f7522c6634e809964f9010749e, type: 3}
+  miniGame: {fileID: 0}
 --- !u!64 &-4652923070543585748
 MeshCollider:
   m_ObjectHideFlags: 0

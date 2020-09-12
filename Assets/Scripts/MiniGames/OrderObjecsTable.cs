@@ -16,14 +16,16 @@ public class OrderObjecsTable : MonoBehaviour
     [Tooltip("Objetos para comparacion (correctos + nulls) (no serán visibles para el usuario")]
     private List<GameObject> neededListOfObjects = new List<GameObject>();
 
-    private List<GameObject> objDisabled = new List<GameObject>();
+    private List<Word> objDisabled = new List<Word>();
 
-    private Dictionary<GameObject, GameObject> correlation = new Dictionary<GameObject, GameObject>(); // <objectospawn, nnedenlistobjects>
+    private List<GameObject> setObjectsToWords = new List<GameObject>();
 
     [SerializeField]
     [Tooltip("Wordobjects para la ubicacion de los botones (correctos) (seran visibles para el usaurio, en la interfaz)")]
     public List<Word> words = new List<Word>();
 
+    [Tooltip("indice que dira cuantos objetos estan erroneos")]
+    public int nulls; 
     public GameObject stand;
 
     public GameObject templateButton;
@@ -37,65 +39,50 @@ public class OrderObjecsTable : MonoBehaviour
 
     public void CreateButtoms()
     {
-
-        foreach (Word word in words)
+        int max = words.Count;
+        int indice = 0;
+        foreach(Word word in words)
         {
             GameObject gameObjectWord = Instantiate(templateButton, panel);
             gameObjectWord.GetComponentInChildren<Text>().text = word.word;
+            gameObjectWord.GetComponent<PickUp>().setMinigame(gameObject);
             gameObjectWord.GetComponent<Button>().onClick.AddListener(() => word.obj.GetComponent<PickUp>().ClickOnLabel(word));
             word.button = gameObjectWord;
+            word.obj = setObjectsToWords[indice];
+            indice++;
         }
     }
-
-    private void BuildDictionary()
-    {
-        int indice = 0;
-        int max = objectsToSpawn.Count;
-        while (indice != max)
-        {
-            correlation.Add(objectsToSpawn[indice], neededListOfObjects[indice]);
-
-            if (indice++ > 15)
-            {
-                break;
-            }
-        }
-    }
-
+    
     public void Play()
-    {
-        BuildDictionary();
-        CreateButtoms();
+    {        
         PositionObjects();
+        CreateButtoms();
     }
 
     private void PositionObjects()
     {
         Vector3 newPosition;
         int max = objectsToSpawn.Count;
-        int indice = 0;
-        Utils.Shuffle(objectsToSpawn);
+        List<int> order = Utils.createList(15);
         Transform children;
-        while (indice < max)
+        int index = 0;
+        while(index < max)
         {
-            children = stand.transform.GetChild(indice);
+            
+            GameObject obj = objectsToSpawn[index];
+            obj.GetComponent<PickUp>().setMinigame(gameObject);
+            children = stand.transform.GetChild(order[index]);            
             newPosition = children.transform.position;
-            Instantiate(objectsToSpawn[indice], newPosition, new Quaternion(), stand.transform);
-            indice++;
+            setObjectsToWords.Add(Instantiate(obj, newPosition, new Quaternion(), stand.transform));
+            index++;
         }
 
     }
+    
 
     private void Validate()
     {
-
-        if (correlation[objToInteract2.obj] == null)
-        {
-            LoseState();
-            UnSet();
-            return;
-        }
-        int balance = correlation[objToInteract2.obj].GetComponent<ID>().id - correlation[objToInteract1].GetComponent<ID>().id;
+        int balance = objToInteract2.obj.GetComponent<ID>().id - objToInteract1.GetComponent<ID>().id;
         if (balance == 0)
             HideObj();
         else
@@ -105,17 +92,20 @@ public class OrderObjecsTable : MonoBehaviour
 
     private void ActiveAllObjects()
     {
-        int indice = objDisabled.Count;
-        while (indice != 0)
+      
+        foreach(Word word in objDisabled)
         {
-            objDisabled[indice++].SetActive(true);
+            Debug.Log(word.obj.GetComponent<ID>().id + "  " + word.obj + "  f"  + word.button);
+            
+            word.obj.SetActive(true);            
+            word.button.SetActive(true);
         }
         objDisabled.Clear();
     }
 
     private void HideObj()
     {
-        objDisabled.Add(objToInteract1);
+        objDisabled.Add(objToInteract2);
         objToInteract1.SetActive(false);
         objToInteract2.button.SetActive(false);
     }
@@ -128,16 +118,12 @@ public class OrderObjecsTable : MonoBehaviour
 
     public void SetObjectInterface(Word word)
     {
-        Debug.Log(2.2);
         if (objToInteract2 == null)
-        {
+        {            
             /*agregar efectos de luz*/
-            Debug.Log(3.2);
             objToInteract2 = word;
-            Debug.Log(4.2);
             if (objToInteract1 != null)
             {
-                Debug.Log(5.2);
                 Validate();
             }
             return;
@@ -145,25 +131,19 @@ public class OrderObjecsTable : MonoBehaviour
         if (word.obj.GetComponent<ID>().id == objToInteract2.obj.GetComponent<ID>().id)
         {
             /* quitar efectos de luz*/
-            Debug.Log(6.2);
             objToInteract2 = null;
             return;
         }
-        Debug.Log(7.2);
     }
 
     public void SetObjectTable(GameObject obj)
     {
-        Debug.Log(2.1);
         if (objToInteract1 == null)
         {
-            Debug.Log(3.1);
             /*agregar efectos de luz*/
             objToInteract1 = obj;
-            Debug.Log(4.1);
             if (objToInteract2 != null)
             {
-                Debug.Log(5.1);
                 Validate();
             }
             return;
@@ -171,7 +151,6 @@ public class OrderObjecsTable : MonoBehaviour
         if (obj.GetComponent<ID>().id == objToInteract1.GetComponent<ID>().id)
         {
             /* quitar efectos de luz*/
-            Debug.Log(6.1);
             objToInteract1 = null;
             return;
         }

@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 7679583594199959144}
   - component: {fileID: -3301999715356103916}
   m_Layer: 5
-  m_Name: WordTemplate
+  m_Name: TemplateButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

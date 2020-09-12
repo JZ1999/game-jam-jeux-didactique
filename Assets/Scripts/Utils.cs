@@ -18,4 +18,15 @@ static public class Utils
 			list[n] = value;
 		}
 	}
+
+    public static List<int> createList(int num) {
+
+        List<int> list = new List<int>();
+        num--;
+        while (num > -1)
+            list.Add(num--);
+        Shuffle(list);
+        return list;
+
+    }
 }
